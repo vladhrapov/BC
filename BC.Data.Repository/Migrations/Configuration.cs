@@ -1,5 +1,7 @@
 namespace BC.Data.Repository.Migrations
 {
+    using Entity;
+    using Entity.Enums;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -14,6 +16,14 @@ namespace BC.Data.Repository.Migrations
 
         protected override void Seed(BC.Data.Repository.BcContext context)
         {
+            context.Users.Add(new User
+            {
+                Id = Guid.NewGuid(),
+                Login = "admin",
+                Password = "qwerty12345",
+                UserType = UserType.Admin
+            });
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

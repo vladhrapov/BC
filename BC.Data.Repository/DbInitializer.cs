@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BC.Data.Entity;
+using BC.Data.Entity.Enums;
 
 namespace BC.Data.Repository
 {
@@ -19,6 +20,7 @@ namespace BC.Data.Repository
             //    Password = "qwerty",
             //    UserType = UserType.Admin
             //});
+
             //context.SaveChanges();
 
             //});
