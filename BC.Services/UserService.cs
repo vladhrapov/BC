@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BC.Data.Entity;
+using BC.Data.Entity.Enums;
 using BC.Data.Repository;
 
 namespace BC.Services
