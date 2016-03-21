@@ -1,11 +1,20 @@
-# Build and Release Folders
-bin/
-bin-debug/
-bin-release/
-
-# Other files and folders
-.settings/
-
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.bak
+*.cache
+*.ilk
+*.log
+.vs/
+[Bb]in
+[Dd]ebug*/
+*.sbr
+obj/
+[Rr]elease*/
+_ReSharper*/
+packages/
