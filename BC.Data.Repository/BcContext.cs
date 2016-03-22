@@ -17,5 +17,7 @@ namespace BC.Data.Repository
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<Project> Projects { get; set; }
     }
 }

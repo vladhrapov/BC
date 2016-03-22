@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BC.Data.Entity;
 
 namespace BC.Data.Repository.Repository
 {
@@ -15,24 +17,39 @@ namespace BC.Data.Repository.Repository
             this._context = context;
         }
 
-        public IQueryable<Entity.Payment> All
+        public IQueryable<Payment> All
         {
-            get { throw new NotImplementedException(); }
+            get { return this._context.Payments.AsQueryable(); }
         }
 
-        public Entity.Payment Find(int id)
+        public Payment Find(int id)
         {
-            throw new NotImplementedException();
+            return this._context.Payments.Find(id);
         }
 
-        public void InsertOrUpdate(Entity.Payment item)
+        public void InsertOrUpdate(Payment payment)
         {
-            throw new NotImplementedException();
+            if (payment != null)
+            {
+                if (payment.Id == default(Guid))
+                {
+                    this._context.Payments.Add(payment);
+                }
+                else
+                {
+                    this._context.Entry(payment).State = System.Data.Entity.EntityState.Modified;
+                }
+            }
+            else
+            {
+                throw new NullReferenceException("Payment is null");
+            }
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var payment = this.Find(id);
+            this._context.Payments.Remove(payment);
         }
 
     }
