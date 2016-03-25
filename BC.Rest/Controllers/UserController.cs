@@ -11,15 +11,9 @@ namespace BC.Rest.Controllers
 {
     public class UserController : ApiController
     {
-
         public List<User> GetUsers()
         {
-           return UserService.GetUsers();
-        }
-
-        public UserController()
-        {
-
+            return new UserService().GetUsers();
         }
     }
 }

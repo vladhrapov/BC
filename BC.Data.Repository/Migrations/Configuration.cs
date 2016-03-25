@@ -3,9 +3,7 @@ namespace BC.Data.Repository.Migrations
     using Entity;
     using Entity.Enums;
     using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<BC.Data.Repository.BcContext>
     {

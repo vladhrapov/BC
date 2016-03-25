@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\ProjectStatus.cs" />
     <Compile Include="Enums\UserType.cs" />
     <Compile Include="Payment.cs" />
     <Compile Include="Project.cs" />

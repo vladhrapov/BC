@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BC.Data.Entity;
 
 namespace BC.Data.Repository.Repository
 {
@@ -15,25 +17,29 @@ namespace BC.Data.Repository.Repository
             this._context = context;
         }
 
-        public IQueryable<Entity.Project> All
+        public IQueryable<Project> All
         {
-            get { throw new NotImplementedException(); }
+            get { return _context.Projects.AsQueryable(); }
         }
 
-        public Entity.Project Find(int id)
+        public Project Find(Guid id)
         {
-            throw new NotImplementedException();
+            return _context.Projects.Find(id);
         }
 
-        public void InsertOrUpdate(Entity.Project item)
+        public void InsertOrUpdate(Project item)
         {
-            throw new NotImplementedException();
+            _context.Projects.AddOrUpdate(item);
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
-            throw new NotImplementedException();
-        }
+            var project = _context.Projects.SingleOrDefault(p => p.Id.Equals(id));
 
+            if (project != null)
+            {
+                _context.Projects.Remove(project);
+            }
+        }
     }
 }

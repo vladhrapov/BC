@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BC.Data.Entity;
 
 namespace BC.Data.Repository.Repository
@@ -22,7 +18,7 @@ namespace BC.Data.Repository.Repository
             get { return this._context.Payments.AsQueryable(); }
         }
 
-        public Payment Find(int id)
+        public Payment Find(Guid id)
         {
             return this._context.Payments.Find(id);
         }
@@ -46,7 +42,7 @@ namespace BC.Data.Repository.Repository
             }
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             var payment = this.Find(id);
             this._context.Payments.Remove(payment);
