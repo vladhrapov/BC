@@ -20,7 +20,7 @@ namespace BC.Data.Repository.Repository
             get { throw new NotImplementedException(); }
         }
 
-        public Entity.User Find(int id)
+        public Entity.User Find(Guid id)
         {
             throw new NotImplementedException();
         }
@@ -30,7 +30,7 @@ namespace BC.Data.Repository.Repository
             throw new NotImplementedException();
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             throw new NotImplementedException();
         }

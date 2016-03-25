@@ -7,22 +7,23 @@ using BC.Data.Repository;
 
 namespace BC.Services
 {
-    public static class UserService
+    public class UserService : BaseService
     {
-        private static readonly IUserRepository userRepository;
+        private readonly IUserRepository UserRepository;
 
-        static UserService()
+        public UserService()
         {
-            userRepository = new UserRepository(new BcContext());
+            UserRepository = new UserRepository(BaseService.GetContext());
         }
 
-        public static void CreateUser(string login, string password)
+        public void CreateUser(string login, string password)
         {
             if (password.Length < 8)
             {
                 throw new ArgumentException("Login length less then 8 characters ");
             }
-            if (userRepository.GetUsers().Any(u => u.Login == login))
+
+            if (UserRepository.GetUsers().Any(u => u.Login == login))
             {
                 throw new ArgumentException("User with name {0}, is already exist, choose another login", login);
             }
@@ -35,12 +36,12 @@ namespace BC.Services
                 UserType = UserType.User
             };
 
-            userRepository.AddUser(user);
+            UserRepository.AddUser(user);
         }
 
-        public static List<User> GetUsers()
+        public List<User> GetUsers()
         {
-            return userRepository.GetUsers().ToList();
+            return UserRepository.GetUsers().ToList();
         }
     }
 }
