@@ -14,8 +14,6 @@ namespace BC.Services
     {
         private readonly IProjectRepository ProjectRepository;
 
-        public int x = new Random().Next(0, 20000);
-
         public ProjectService()
         {
             ProjectRepository = new ProjectRepository(BaseService.GetContext());
@@ -31,6 +29,22 @@ namespace BC.Services
             var project = ProjectRepository.Find(id);
             //project.Payments = get payments 
             return project;
+        }
+
+        public void AddOrUpdateProject(Project project)
+        {
+            if (project.Name == "")
+            {
+                throw new ArgumentException("Name cant be '' ");
+            }
+
+            ProjectRepository.InsertOrUpdate(project);
+        }
+
+        public void DeleteProject(Guid projectId)
+        {
+            ProjectRepository.Delete(projectId);
+            
         }
     }
 }

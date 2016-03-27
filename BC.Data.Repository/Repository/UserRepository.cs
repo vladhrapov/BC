@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,23 +18,29 @@ namespace BC.Data.Repository.Repository
 
         public IQueryable<Entity.User> All
         {
-            get { throw new NotImplementedException(); }
+            get { return _context.Users.AsQueryable(); }
         }
 
         public Entity.User Find(Guid id)
         {
-            throw new NotImplementedException();
+            return _context.Users.Find(id);
         }
 
         public void InsertOrUpdate(Entity.User item)
         {
-            throw new NotImplementedException();
+            _context.Users.AddOrUpdate(item);
+            _context.SaveChanges();
         }
 
         public void Delete(Guid id)
         {
-            throw new NotImplementedException();
-        }
+            var user = _context.Users.SingleOrDefault(u => u.Id.Equals(id));
 
+            if (user != null)
+            {
+                _context.Users.Remove(user);
+            }
+            _context.SaveChanges();
+        }
     }
 }

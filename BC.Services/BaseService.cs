@@ -4,16 +4,16 @@ namespace BC.Services
 {
     public class BaseService
     {
-        private static readonly BcContext _context;
+        private static BcContext _context;
 
         protected BaseService()
         {
-           
+
         }
 
         protected static BcContext GetContext()
         {
-            return _context ?? new BcContext();
+            return _context ?? (_context = new BcContext());
         }
     }
 }

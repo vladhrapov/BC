@@ -20,5 +20,23 @@ namespace BC.Rest.Controllers
         {
             return new ProjectService().GetprojectById(id);
         }
+
+        [HttpPost]
+        public void Add(Project project)
+        {
+            new ProjectService().AddOrUpdateProject(project);
+        }
+
+        [HttpPut]
+        public void Update(Project project)
+        {
+            new ProjectService().AddOrUpdateProject(project);
+        }
+
+        [HttpDelete]
+        public void Delete(Guid projectId)
+        {
+            new ProjectService().DeleteProject(projectId);
+        }
     }
 }

@@ -30,6 +30,7 @@ namespace BC.Data.Repository.Repository
         public void InsertOrUpdate(Project item)
         {
             _context.Projects.AddOrUpdate(item);
+            _context.SaveChanges();
         }
 
         public void Delete(Guid id)
@@ -40,6 +41,7 @@ namespace BC.Data.Repository.Repository
             {
                 _context.Projects.Remove(project);
             }
+            _context.SaveChanges();
         }
     }
 }
