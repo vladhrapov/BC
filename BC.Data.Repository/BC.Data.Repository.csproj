@@ -63,7 +63,6 @@
     <Compile Include="Repository\ProjectRepository.cs" />
     <Compile Include="Repository\Uow.cs" />
     <Compile Include="Repository\UserRepository.cs" />
-    <Compile Include="UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

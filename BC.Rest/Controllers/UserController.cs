@@ -11,9 +11,32 @@ namespace BC.Rest.Controllers
 {
     public class UserController : ApiController
     {
-        public List<User> GetUsers()
+        public List<User> Users()
         {
             return new UserService().GetUsers();
+        }
+
+        public User User(Guid userId)
+        {
+            return new UserService().GetUserById(userId);
+        }
+
+        [HttpPost]
+        public void AddUser(User user)
+        {
+            new UserService().AddUser(user);
+        }
+
+        [HttpDelete]
+        public void Delete(Guid userId)
+        {
+            new UserService().DeleteUser(userId);
+        }
+
+        [HttpPut]
+        public void UpdateUser(User user)
+        {
+            new UserService().UpdateUser(user);
         }
     }
 }

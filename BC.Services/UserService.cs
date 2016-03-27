@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BC.Data.Entity;
-using BC.Data.Entity.Enums;
-using BC.Data.Repository;
+using BC.Data.Repository.Repository;
 
 namespace BC.Services
 {
@@ -16,32 +15,44 @@ namespace BC.Services
             UserRepository = new UserRepository(BaseService.GetContext());
         }
 
-        public void CreateUser(string login, string password)
+        public void AddUser(User user)
         {
-            if (password.Length < 8)
+            if (user.Password.Length < 8)
             {
                 throw new ArgumentException("Login length less then 8 characters ");
             }
 
-            if (UserRepository.GetUsers().Any(u => u.Login == login))
+            if (UserRepository.All.Any(u => u.Login == user.Login))
             {
-                throw new ArgumentException("User with name {0}, is already exist, choose another login", login);
+                throw new ArgumentException("User with name {0}, is already exist, choose another login", user.Login);
             }
 
-            var user = new User
-            {
-                Id = Guid.NewGuid(),
-                Login = login,
-                Password = password,
-                UserType = UserType.User
-            };
-
-            UserRepository.AddUser(user);
+            UserRepository.InsertOrUpdate(user);
         }
 
         public List<User> GetUsers()
         {
-            return UserRepository.GetUsers().ToList();
+            return UserRepository.All.ToList();
+        }
+
+        public User GetUserById(Guid userId)
+        {
+            return UserRepository.Find(userId);
+        }
+
+        public void DeleteUser(Guid userId)
+        {
+            UserRepository.Delete(userId);
+        }
+
+        public void UpdateUser(User user)
+        {
+            if (user.Password.Length < 8)
+            {
+                throw new ArgumentException("Login length less then 8 characters ");
+            }
+
+            UserRepository.InsertOrUpdate(user);
         }
     }
 }
