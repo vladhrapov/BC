@@ -9,11 +9,19 @@ namespace BC.Rest.Controllers
 {
     public class UserController : ApiController
     {
-        public List<User> Users()
+        //public List<User> Users()
+        //{
+        //    return new UserService().GetUsers().ToList();
+        //}
+        
+        [HttpGet]
+        public HttpResponseMessage Users()
         {
-            return new UserService().GetUsers().ToList();
+            var users = new UserService().GetUsers().ToList();
+            return Request.CreateResponse(HttpStatusCode.OK, users);
         }
 
+        [HttpGet]
         public User User(Guid id)
         {
             return new UserService().GetUserById(id);

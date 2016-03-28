@@ -9,11 +9,13 @@ namespace BC.Rest.Controllers
 {
     public class ProjectController : ApiController
     {
+        [HttpGet]
         public List<Project> Get()
         {
             return new ProjectService().GetProjects().ToList();
         }
 
+        [HttpGet]
         public Project Get(Guid id)
         {
             return new ProjectService().GetprojectById(id);
