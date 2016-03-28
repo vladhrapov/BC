@@ -2,13 +2,12 @@
 using BC.Data.Repository.Repository;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BC.Services
 {
-    class PaymentService : BaseService
+    public class PaymentService : BaseService
     {
         private readonly Uow _uow;
 
@@ -22,13 +21,24 @@ namespace BC.Services
             return _uow.Payment.All.AsEnumerable();
         }
 
-        public Payment GetPaymentById(int id)
+        public Payment GetPaymentById(Guid id)
         {
             return _uow.Payment.Find(id);
         }
 
+        public Payment PaymentGetByCredentials(string login, string password)
+        {
+           return _uow.Payment.GetByCredentials(p => p.Password.Equals(password) && p.Login.Equals(login));
+        }
+        
         public void AddOrUpdateProject(Payment payment)
         {
+            var oldPayment = _uow.Payment.GetByCredentials(p => p.Password.Equals(payment.Password));
+            if (oldPayment != null)
+            {
+                throw new DuplicateNameException("Password is already exist");
+            }
+
             if (payment != null)
             {
                 _uow.Payment.InsertOrUpdate(payment);
@@ -38,10 +48,10 @@ namespace BC.Services
             {
                 throw new NullReferenceException("Payment is null");
             }
-            
+
         }
 
-        public void DeletePayment(int id)
+        public void DeletePayment(Guid id)
         {
             _uow.Payment.Delete(id);
             _uow.Save();

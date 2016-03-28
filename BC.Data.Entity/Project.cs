@@ -12,10 +12,18 @@ namespace BC.Data.Entity
     public class Project
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         public string Name { get; set; }
+
+        //assignment (Text on payment) Призначення
+        [Required]
+        public string Description { get; set; }
+
+        //Long text about project
+        [Required]
+        public string Info { get; set; }
 
         [Required]
         public double TotalSum { get; set; }
@@ -33,5 +41,6 @@ namespace BC.Data.Entity
         public ProjectStatus ProjectStatus { get; set; }
 
         public virtual ICollection<Payment> Payments { get; set; }
+
     }
 }

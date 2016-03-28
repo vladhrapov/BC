@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using BC.Data.Entity;
 using BC.Services;
@@ -11,12 +9,14 @@ namespace BC.Rest.Controllers
 {
     public class ProjectController : ApiController
     {
-        public List<Project> Projects()
+        [HttpGet]
+        public List<Project> Get()
         {
             return new ProjectService().GetProjects().ToList();
         }
 
-        public Project Project(int id)
+        [HttpGet]
+        public Project Get(Guid id)
         {
             return new ProjectService().GetprojectById(id);
         }
@@ -34,9 +34,9 @@ namespace BC.Rest.Controllers
         }
 
         [HttpDelete]
-        public void Delete(int projectId)
+        public void Delete(Guid id)
         {
-            new ProjectService().DeleteProject(projectId);
+            new ProjectService().DeleteProject(id);
         }
     }
 }

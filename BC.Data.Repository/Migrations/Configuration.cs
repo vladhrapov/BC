@@ -15,15 +15,26 @@ namespace BC.Data.Repository.Migrations
 
         protected override void Seed(BC.Data.Repository.BcContext context)
         {
-
             Database.SetInitializer(new DropCreateDatabaseAlways<BcContext>());
 
             context.Users.Add(new User
             {
-                //Id = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Login = "admin",
                 Password = "qwerty12345",
                 UserType = UserType.Admin
+            });
+
+            context.Projects.Add(new Project
+            {
+                Id = Guid.NewGuid(),
+                Name = "Детский дома",
+                TotalSum = 10000,
+                CurrentSum = 0,
+                Description = "Помощь дет дома",
+                Info = "Просто текст не ясно какой но очень длиный ",
+                ProjectStatus = ProjectStatus.Open,
+
             });
 
             //  This method will be called after migrating to the latest version.

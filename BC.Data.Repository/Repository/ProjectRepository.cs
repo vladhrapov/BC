@@ -22,7 +22,7 @@ namespace BC.Data.Repository.Repository
             get { return _context.Projects.AsQueryable(); }
         }
 
-        public Project Find(int id)
+        public Project Find(Guid id)
         {
             return _context.Projects.Find(id);
         }
@@ -40,7 +40,7 @@ namespace BC.Data.Repository.Repository
             
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             var project = _context.Projects.SingleOrDefault(p => p.Id.Equals(id));
 

@@ -12,7 +12,7 @@ namespace BC.Data.Entity
     public class User
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         public string Login { get; set; }
@@ -23,5 +23,7 @@ namespace BC.Data.Entity
 
         [Required]
         public UserType UserType { get; set; }
+
+        public virtual ICollection<Payment> Payments { get; set; }
     }
 }
