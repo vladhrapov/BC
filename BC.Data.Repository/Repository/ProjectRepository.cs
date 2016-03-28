@@ -22,18 +22,25 @@ namespace BC.Data.Repository.Repository
             get { return _context.Projects.AsQueryable(); }
         }
 
-        public Project Find(Guid id)
+        public Project Find(int id)
         {
             return _context.Projects.Find(id);
         }
 
         public void InsertOrUpdate(Project item)
         {
-            _context.Projects.AddOrUpdate(item);
-            _context.SaveChanges();
+            if (item != null)
+            {
+                _context.Projects.AddOrUpdate(item);
+            }
+            else
+            {
+                throw new NullReferenceException("Project is null");
+            }
+            
         }
 
-        public void Delete(Guid id)
+        public void Delete(int id)
         {
             var project = _context.Projects.SingleOrDefault(p => p.Id.Equals(id));
 
@@ -41,7 +48,10 @@ namespace BC.Data.Repository.Repository
             {
                 _context.Projects.Remove(project);
             }
-            _context.SaveChanges();
+            else
+            {
+                throw new NullReferenceException("There is no such project");
+            }
         }
     }
 }

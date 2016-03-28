@@ -4,6 +4,7 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BC.Data.Entity;
 
 namespace BC.Data.Repository.Repository
 {
@@ -16,23 +17,29 @@ namespace BC.Data.Repository.Repository
             this._context = context;
         }
 
-        public IQueryable<Entity.User> All
+        public IQueryable<User> All
         {
             get { return _context.Users.AsQueryable(); }
         }
 
-        public Entity.User Find(Guid id)
+        public User Find(int id)
         {
             return _context.Users.Find(id);
         }
 
-        public void InsertOrUpdate(Entity.User item)
-        {
-            _context.Users.AddOrUpdate(item);
-            _context.SaveChanges();
+        public void InsertOrUpdate(User item)
+        {         
+            if (item != null)
+            {
+                _context.Users.AddOrUpdate(item);
+            }
+            else
+            {
+                throw new NullReferenceException("Project is null");
+            }
         }
 
-        public void Delete(Guid id)
+        public void Delete(int id)
         {
             var user = _context.Users.SingleOrDefault(u => u.Id.Equals(id));
 
@@ -40,7 +47,10 @@ namespace BC.Data.Repository.Repository
             {
                 _context.Users.Remove(user);
             }
-            _context.SaveChanges();
+            else
+            {
+                throw new NullReferenceException("There is no such user");
+            }
         }
     }
 }
