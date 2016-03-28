@@ -51,14 +51,6 @@
   <ItemGroup>
     <Compile Include="BcContext.cs" />
     <Compile Include="DbInitializer.cs" />
-    <Compile Include="Migrations\201603281107055_migration.cs" />
-    <Compile Include="Migrations\201603281107055_migration.Designer.cs">
-      <DependentUpon>201603281107055_migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603281339421_migration2.cs" />
-    <Compile Include="Migrations\201603281339421_migration2.Designer.cs">
-      <DependentUpon>201603281339421_migration2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IPaymentRepository.cs" />
@@ -80,14 +72,6 @@
       <Project>{5be8c365-1a31-4683-9950-2f92a32cb677}</Project>
       <Name>BC.Data.Entity</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603281107055_migration.resx">
-      <DependentUpon>201603281107055_migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603281339421_migration2.resx">
-      <DependentUpon>201603281339421_migration2.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

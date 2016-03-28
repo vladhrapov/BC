@@ -11,22 +11,35 @@ namespace BC.Data.Entity
     public class Payment
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
+
         [Required]
         public int CheckNumber { get; set; }
+
+        [Required]
+        public string Login { get; set; }
+
         [Required]
         public string Password { get; set; }
+
         [Required]
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
+
         [Required]
-        public int Sum { get; set; }
+        public double Sum { get; set; }
+
         [Required]
         public string Info { get; set; }
-        public int QR { get; set; }
+
+        public string QR { get; set; }
+
         [Required]
-        public int ProjectId { get; set; }
-        public int? UserId { get; set; }
+        public Guid ProjectId { get; set; }
+
+        public Guid? UserId { get; set; }
+
         public virtual Project Project { get; set; }
+
         public virtual User User { get; set; }
     }
 }

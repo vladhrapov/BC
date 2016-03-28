@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
-using System.Threading.Tasks;
 using BC.Data.Entity;
-using BC.Data.Repository;
 using BC.Data.Repository.Repository;
 
 namespace BC.Services
@@ -24,14 +20,14 @@ namespace BC.Services
             return _uow.Project.All.AsEnumerable();
         }
 
-        public Project GetprojectById(int id)
+        public Project GetprojectById(Guid id)
         {
             return _uow.Project.Find(id);
         }
 
         public void AddOrUpdateProject(Project project)
         {
-            if (project.Name == "")
+            if (project.Name == string.Empty)
             {
                 throw new ArgumentException("Project name cant be empty");
             }
@@ -39,7 +35,7 @@ namespace BC.Services
             _uow.Save();
         }
 
-        public void DeleteProject(int id)
+        public void DeleteProject(Guid id)
         {
             _uow.Project.Delete(id);
             _uow.Save();

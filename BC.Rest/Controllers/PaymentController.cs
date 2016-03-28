@@ -1,39 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using BC.Data.Entity;
+using BC.Services;
 
 namespace BC.Rest.Controllers
 {
     public class PaymentController : ApiController
     {
         // GET: api/Payment
-        public IEnumerable<string> Get()
+        public List<Payment> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new PaymentService().GetPayments().ToList();
         }
 
         // GET: api/Payment/5
-        public string Get(int id)
+        public Payment Get(Guid id)
         {
-            return "value";
+            return new PaymentService().GetPaymentById(id);
+        }
+
+        public Payment Get(string login, string password)
+        {
+            return new PaymentService().PaymentGetByCredentials(login , password);
         }
 
         // POST: api/Payment
-        public void Post([FromBody]string value)
+        [HttpPost]
+        public void Add(Payment payment)
         {
+             new PaymentService().AddOrUpdateProject(payment);
         }
-
+        
         // PUT: api/Payment/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        public void Update(Payment payment)
         {
+            new PaymentService().AddOrUpdateProject(payment);
         }
 
         // DELETE: api/Payment/5
-        public void Delete(int id)
+        [HttpDelete]
+        public void Delete(Guid id)
         {
+            new PaymentService().DeletePayment(id);
         }
     }
 }
