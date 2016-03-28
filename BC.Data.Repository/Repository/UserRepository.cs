@@ -22,7 +22,7 @@ namespace BC.Data.Repository.Repository
             get { return _context.Users.AsQueryable(); }
         }
 
-        public User Find(int id)
+        public User Find(Guid id)
         {
             return _context.Users.Find(id);
         }
@@ -39,7 +39,7 @@ namespace BC.Data.Repository.Repository
             }
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             var user = _context.Users.SingleOrDefault(u => u.Id.Equals(id));
 

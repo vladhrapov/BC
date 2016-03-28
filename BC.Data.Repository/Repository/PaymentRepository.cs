@@ -18,7 +18,7 @@ namespace BC.Data.Repository.Repository
             get { return _context.Payments.AsQueryable(); }
         }
 
-        public Payment Find(int id)
+        public Payment Find(Guid id)
         {
             return _context.Payments.Find(id);
         }
@@ -27,7 +27,7 @@ namespace BC.Data.Repository.Repository
         {
             if (payment != null)
             {
-                if (payment.Id == default(int))
+                if (payment.Id == default(Guid))
                 {
                     _context.Payments.Add(payment);
                 }
@@ -42,7 +42,7 @@ namespace BC.Data.Repository.Repository
             }
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             var payment = this.Find(id);
 
@@ -54,8 +54,16 @@ namespace BC.Data.Repository.Repository
             {
                 throw new NullReferenceException("There is no such payment");
             }
-
         }
 
+        public Payment GetByCredentials(string login, string password)
+        {
+            return _context.Payments.SingleOrDefault(p => p.Password.Equals(password) && p.Login.Equals(login));
+        }
+
+        public Payment GetByCredentials(Func<Payment, bool> expression)
+        {
+            return _context.Payments.SingleOrDefault(expression);
+        }
     }
 }

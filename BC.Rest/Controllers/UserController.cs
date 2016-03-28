@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using BC.Data.Entity;
 using BC.Services;
@@ -13,12 +11,12 @@ namespace BC.Rest.Controllers
     {
         public List<User> Users()
         {
-            return new UserService().GetUsers();
+            return new UserService().GetUsers().ToList();
         }
 
-        public User User(int userId)
+        public User User(Guid id)
         {
-            return new UserService().GetUserById(userId);
+            return new UserService().GetUserById(id);
         }
 
         [HttpPost]
@@ -28,9 +26,9 @@ namespace BC.Rest.Controllers
         }
 
         [HttpDelete]
-        public void Delete(int userId)
+        public void Delete(Guid id)
         {
-            new UserService().DeleteUser(userId);
+            new UserService().DeleteUser(id);
         }
 
         [HttpPut]

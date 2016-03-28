@@ -35,12 +35,12 @@ namespace BC.Services
             return _uow.User.All.AsEnumerable();
         }
 
-        public User GetUserById(int id)
+        public User GetUserById(Guid id)
         {
             return _uow.User.Find(id);
         }
 
-        public void DeleteUser(int id)
+        public void DeleteUser(Guid id)
         {
             _uow.User.Delete(id);
             _uow.Save();
