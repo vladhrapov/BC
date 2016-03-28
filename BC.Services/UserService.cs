@@ -8,11 +8,11 @@ namespace BC.Services
 {
     public class UserService : BaseService
     {
-        private readonly IUserRepository UserRepository;
+        private readonly Uow _uow;
 
         public UserService()
         {
-            UserRepository = new UserRepository(BaseService.GetContext());
+            this._uow = BaseService.GetUow();
         }
 
         public void AddUser(User user)
@@ -22,27 +22,28 @@ namespace BC.Services
                 throw new ArgumentException("Login length less then 8 characters ");
             }
 
-            if (UserRepository.All.Any(u => u.Login == user.Login))
+            if (_uow.User.All.Any(u => u.Login == user.Login))
             {
                 throw new ArgumentException("User with name {0}, is already exist, choose another login", user.Login);
             }
 
-            UserRepository.InsertOrUpdate(user);
+            _uow.User.InsertOrUpdate(user);
         }
 
-        public List<User> GetUsers()
+        public IEnumerable<User> GetUsers()
         {
-            return UserRepository.All.ToList();
+            return _uow.User.All.AsEnumerable();
         }
 
-        public User GetUserById(Guid userId)
+        public User GetUserById(int id)
         {
-            return UserRepository.Find(userId);
+            return _uow.User.Find(id);
         }
 
-        public void DeleteUser(Guid userId)
+        public void DeleteUser(int id)
         {
-            UserRepository.Delete(userId);
+            _uow.User.Delete(id);
+            _uow.Save();
         }
 
         public void UpdateUser(User user)
@@ -52,7 +53,8 @@ namespace BC.Services
                 throw new ArgumentException("Login length less then 8 characters ");
             }
 
-            UserRepository.InsertOrUpdate(user);
+            _uow.User.InsertOrUpdate(user);
+            _uow.Save();
         }
     }
 }

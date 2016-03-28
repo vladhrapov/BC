@@ -16,7 +16,7 @@ namespace BC.Rest.Controllers
             return new UserService().GetUsers();
         }
 
-        public User User(Guid userId)
+        public User User(int userId)
         {
             return new UserService().GetUserById(userId);
         }
@@ -28,7 +28,7 @@ namespace BC.Rest.Controllers
         }
 
         [HttpDelete]
-        public void Delete(Guid userId)
+        public void Delete(int userId)
         {
             new UserService().DeleteUser(userId);
         }

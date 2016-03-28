@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BC.Data.Entity.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BC.Data.Entity
 {
     public class User
     {
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Login { get; set; }

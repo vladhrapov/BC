@@ -15,25 +15,25 @@ namespace BC.Data.Repository.Repository
 
         public IQueryable<Payment> All
         {
-            get { return this._context.Payments.AsQueryable(); }
+            get { return _context.Payments.AsQueryable(); }
         }
 
-        public Payment Find(Guid id)
+        public Payment Find(int id)
         {
-            return this._context.Payments.Find(id);
+            return _context.Payments.Find(id);
         }
 
         public void InsertOrUpdate(Payment payment)
         {
             if (payment != null)
             {
-                if (payment.Id == default(Guid))
+                if (payment.Id == default(int))
                 {
-                    this._context.Payments.Add(payment);
+                    _context.Payments.Add(payment);
                 }
                 else
                 {
-                    this._context.Entry(payment).State = System.Data.Entity.EntityState.Modified;
+                    _context.Entry(payment).State = System.Data.Entity.EntityState.Modified;
                 }
             }
             else
@@ -42,10 +42,19 @@ namespace BC.Data.Repository.Repository
             }
         }
 
-        public void Delete(Guid id)
+        public void Delete(int id)
         {
             var payment = this.Find(id);
-            this._context.Payments.Remove(payment);
+
+            if (payment != null)
+            {
+                _context.Payments.Remove(payment);
+            }
+            else
+            {
+                throw new NullReferenceException("There is no such payment");
+            }
+
         }
 
     }

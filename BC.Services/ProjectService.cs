@@ -12,39 +12,37 @@ namespace BC.Services
 {
     public class ProjectService : BaseService
     {
-        private readonly IProjectRepository ProjectRepository;
+        private readonly Uow _uow;
 
         public ProjectService()
         {
-            ProjectRepository = new ProjectRepository(BaseService.GetContext());
+            this._uow = BaseService.GetUow();
         }
 
         public IEnumerable<Project> GetProjects()
         {
-            return ProjectRepository.All;
+            return _uow.Project.All.AsEnumerable();
         }
 
-        public Project GetprojectById(Guid id)
+        public Project GetprojectById(int id)
         {
-            var project = ProjectRepository.Find(id);
-            //project.Payments = get payments 
-            return project;
+            return _uow.Project.Find(id);
         }
 
         public void AddOrUpdateProject(Project project)
         {
             if (project.Name == "")
             {
-                throw new ArgumentException("Name cant be '' ");
+                throw new ArgumentException("Project name cant be empty");
             }
-
-            ProjectRepository.InsertOrUpdate(project);
+            _uow.Project.InsertOrUpdate(project);
+            _uow.Save();
         }
 
-        public void DeleteProject(Guid projectId)
+        public void DeleteProject(int id)
         {
-            ProjectRepository.Delete(projectId);
-            
+            _uow.Project.Delete(id);
+            _uow.Save();
         }
     }
 }

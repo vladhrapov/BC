@@ -16,7 +16,7 @@ namespace BC.Rest.Controllers
             return new ProjectService().GetProjects().ToList();
         }
 
-        public Project Project(Guid id)
+        public Project Project(int id)
         {
             return new ProjectService().GetprojectById(id);
         }
@@ -34,7 +34,7 @@ namespace BC.Rest.Controllers
         }
 
         [HttpDelete]
-        public void Delete(Guid projectId)
+        public void Delete(int projectId)
         {
             new ProjectService().DeleteProject(projectId);
         }

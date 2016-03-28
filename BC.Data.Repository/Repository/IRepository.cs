@@ -7,8 +7,8 @@ namespace BC.Data.Repository.Repository
     public interface IRepository<T> where T : class 
     {
         IQueryable<T> All { get; }
-        T Find(Guid id);
+        T Find(int id);
         void InsertOrUpdate(T item);
-        void Delete(Guid id);
+        void Delete(int id);
     }
 }

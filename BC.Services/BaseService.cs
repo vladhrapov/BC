@@ -1,19 +1,20 @@
 ﻿using BC.Data.Repository;
+using BC.Data.Repository.Repository;
 
 namespace BC.Services
 {
     public class BaseService
     {
-        private static BcContext _context;
+        private static IUow _uow;
 
         protected BaseService()
         {
-
+            _uow = new Uow();
         }
 
-        protected static BcContext GetContext()
+        protected static Uow GetUow()
         {
-            return _context ?? (_context = new BcContext());
+            return _uow as Uow;
         }
     }
 }
