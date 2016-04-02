@@ -30,14 +30,14 @@ namespace BC.Rest.Controllers
         [HttpPost]
         public void Add(Payment payment)
         {
-             new PaymentService().AddOrUpdateProject(payment);
+             new PaymentService().AddPayment(payment);
         }
         
         // PUT: api/Payment/5
         [HttpPut]
         public void Update(Payment payment)
         {
-            new PaymentService().AddOrUpdateProject(payment);
+            new PaymentService().UpdatePayment(payment);
         }
 
         // DELETE: api/Payment/5

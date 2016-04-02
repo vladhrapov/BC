@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 using BC.Data.Entity;
 using BC.Services;
@@ -9,26 +11,19 @@ namespace BC.Rest.Controllers
 {
     public class UserController : ApiController
     {
-        //public List<User> Users()
-        //{
-        //    return new UserService().GetUsers().ToList();
-        //}
-        
-        [HttpGet]
-        public HttpResponseMessage Users()
+        public List<User> Get()
         {
-            var users = new UserService().GetUsers().ToList();
-            return Request.CreateResponse(HttpStatusCode.OK, users);
+            return new UserService().GetUsers().ToList();
         }
 
         [HttpGet]
-        public User User(Guid id)
+        public User Get(Guid id)
         {
             return new UserService().GetUserById(id);
         }
 
         [HttpPost]
-        public void AddUser(User user)
+        public void Add(User user)
         {
             new UserService().AddUser(user);
         }
@@ -40,7 +35,7 @@ namespace BC.Rest.Controllers
         }
 
         [HttpPut]
-        public void UpdateUser(User user)
+        public void Update(User user)
         {
             new UserService().UpdateUser(user);
         }
