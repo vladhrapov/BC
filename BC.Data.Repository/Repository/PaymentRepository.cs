@@ -27,10 +27,11 @@ namespace BC.Data.Repository.Repository
         {
             if (payment != null)
             {
-                if (payment.Id == default(Guid))
+                if (All.FirstOrDefault(p => p.Id == payment.Id) == null)
                 {
                     _context.Payments.Add(payment);
                 }
+
                 else
                 {
                     _context.Entry(payment).State = System.Data.Entity.EntityState.Modified;

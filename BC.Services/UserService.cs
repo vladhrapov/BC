@@ -28,11 +28,12 @@ namespace BC.Services
             }
 
             _uow.User.InsertOrUpdate(user);
+            _uow.Save();
         }
 
         public IEnumerable<User> GetUsers()
         {
-            return _uow.User.All.AsEnumerable();
+            return _uow.User.All.AsEnumerable<User>();
         }
 
         public User GetUserById(Guid id)
