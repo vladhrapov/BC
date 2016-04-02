@@ -19,7 +19,7 @@ namespace BC.Services
 
         public IEnumerable<Payment> GetPayments()
         {
-            return _uow.Payment.All.Where(p => p.IsDemonstration == false).AsEnumerable();
+            return _uow.Payment.All.AsEnumerable();
         }
 
         public Payment GetPaymentById(Guid id)
@@ -34,6 +34,8 @@ namespace BC.Services
 
         public void AddPayment(Payment payment)
         {
+            payment.Date = DateTime.Now;
+
             var oldPayment = _uow.Payment.GetByCredentials(p => p.Password.Equals(payment.Password));
             if (oldPayment != null)
             {
@@ -47,7 +49,7 @@ namespace BC.Services
             }
             else
             {
-                var project = _uow.Project.All.FirstOrDefault(p => p.Id == payment.Id);
+                var project = _uow.Project.All.FirstOrDefault(p => p.Id == payment.ProjectId);
                 if (project == null)
                 {
                     throw new NullReferenceException("No project in id ");
@@ -68,6 +70,7 @@ namespace BC.Services
                 payment.CheckNumber = GetCheckNumber(payment);
                 _uow.Payment.InsertOrUpdate(payment);
             }
+            _uow.Save();
         }
 
         public void UpdatePayment(Payment payment)
@@ -91,7 +94,7 @@ namespace BC.Services
 
         private int GetCheckNumber(Payment payment)
         {
-            var payments = _uow.Payment.All.Where(p => p.ProjectId == payment.Id).ToList();
+            var payments = _uow.Payment.All.Where(p => p.ProjectId == payment.ProjectId).ToList();
             if (payments.Count == 0)
             {
                 return payment.IsDemonstration ? 0 : 1;
@@ -99,7 +102,7 @@ namespace BC.Services
 
             var count = payments.OrderBy(p => p.CheckNumber).Last().CheckNumber;
 
-            return payment.IsDemonstration ? count : count + 1;
+            return payment.IsDemonstration ? count : (count + 1);
         }
     }
 }

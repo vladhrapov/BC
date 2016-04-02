@@ -13,7 +13,7 @@ namespace BC.Data.Repository
         public BcContext()
             : base("BCDatabase")
         {
-
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public DbSet<User> Users { get; set; }
