@@ -34,6 +34,9 @@ namespace BC.Data.Entity
         public string QR { get; set; }
 
         [Required]
+        public bool IsDemonstration { get; set; }
+
+        [Required]
         public Guid ProjectId { get; set; }
 
         public Guid? UserId { get; set; }

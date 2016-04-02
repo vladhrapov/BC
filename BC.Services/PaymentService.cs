@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using BC.Data.Entity.Enums;
 
 namespace BC.Services
 {
@@ -18,7 +19,7 @@ namespace BC.Services
 
         public IEnumerable<Payment> GetPayments()
         {
-            return _uow.Payment.All.AsEnumerable();
+            return _uow.Payment.All.Where(p => p.IsDemonstration == false).AsEnumerable();
         }
 
         public Payment GetPaymentById(Guid id)
@@ -28,10 +29,10 @@ namespace BC.Services
 
         public Payment PaymentGetByCredentials(string login, string password)
         {
-           return _uow.Payment.GetByCredentials(p => p.Password.Equals(password) && p.Login.Equals(login));
+            return _uow.Payment.GetByCredentials(p => p.Password.Equals(password) && p.Login.Equals(login));
         }
-        
-        public void AddOrUpdateProject(Payment payment)
+
+        public void AddPayment(Payment payment)
         {
             var oldPayment = _uow.Payment.GetByCredentials(p => p.Password.Equals(payment.Password));
             if (oldPayment != null)
@@ -39,6 +40,38 @@ namespace BC.Services
                 throw new DuplicateNameException("Password is already exist");
             }
 
+            if (payment.IsDemonstration == true)
+            {
+                payment.CheckNumber = GetCheckNumber(payment);
+                _uow.Payment.InsertOrUpdate(payment);
+            }
+            else
+            {
+                var project = _uow.Project.All.FirstOrDefault(p => p.Id == payment.Id);
+                if (project == null)
+                {
+                    throw new NullReferenceException("No project in id ");
+                }
+
+                if (project.ProjectStatus != ProjectStatus.Open)
+                {
+                    throw new InvalidOperationException("Project is finish");
+                }
+
+                project.CurrentSum += payment.Sum;
+                if (project.CurrentSum > project.TotalSum)
+                {
+                    project.ProjectStatus = ProjectStatus.Finished;
+                }
+                _uow.Project.InsertOrUpdate(project);
+
+                payment.CheckNumber = GetCheckNumber(payment);
+                _uow.Payment.InsertOrUpdate(payment);
+            }
+        }
+
+        public void UpdatePayment(Payment payment)
+        {
             if (payment != null)
             {
                 _uow.Payment.InsertOrUpdate(payment);
@@ -48,13 +81,25 @@ namespace BC.Services
             {
                 throw new NullReferenceException("Payment is null");
             }
-
         }
 
         public void DeletePayment(Guid id)
         {
             _uow.Payment.Delete(id);
             _uow.Save();
+        }
+
+        private int GetCheckNumber(Payment payment)
+        {
+            var payments = _uow.Payment.All.Where(p => p.ProjectId == payment.Id).ToList();
+            if (payments.Count == 0)
+            {
+                return payment.IsDemonstration ? 0 : 1;
+            }
+
+            var count = payments.OrderBy(p => p.CheckNumber).Last().CheckNumber;
+
+            return payment.IsDemonstration ? count : count + 1;
         }
     }
 }
