@@ -35,11 +35,12 @@ namespace BC.Services
         public void AddPayment(Payment payment)
         {
             payment.Date = DateTime.Now;
+            payment.Id = Guid.NewGuid();
 
-            var oldPayment = _uow.Payment.GetByCredentials(p => p.Password.Equals(payment.Password));
+            var oldPayment = _uow.Payment.GetByCredentials(p => p.Login.Equals(payment.Login));
             if (oldPayment != null)
             {
-                throw new DuplicateNameException("Password is already exist");
+                throw new DuplicateNameException("Login is already exist");
             }
 
             if (payment.IsDemonstration == true)

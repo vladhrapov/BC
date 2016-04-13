@@ -27,6 +27,8 @@ namespace BC.Services
 
         public void AddOrUpdateProject(Project project)
         {
+            project.Id = project.Id == default(Guid) ? Guid.NewGuid() : project.Id;
+
             if (project.Name == string.Empty)
             {
                 throw new ArgumentException("Project name cant be empty");
