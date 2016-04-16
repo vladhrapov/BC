@@ -17,6 +17,7 @@ namespace BC.Services
 
         public void AddUser(User user)
         {
+            user.Id = Guid.NewGuid();
             if (user.Password.Length < 8)
             {
                 throw new ArgumentException("Login length less then 8 characters ");
