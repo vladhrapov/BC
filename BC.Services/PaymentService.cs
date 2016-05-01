@@ -37,13 +37,12 @@ namespace BC.Services
             payment.Date = DateTime.Now;
             payment.Id = Guid.NewGuid();
 
-            var oldPayment = _uow.Payment.GetByCredentials(p => p.Login.Equals(payment.Login));
-            if (oldPayment != null)
+            if (_uow.Payment.All.Any(p => p.Login.Equals(payment.Login)))
             {
                 throw new DuplicateNameException("Login is already exist");
             }
 
-            if (payment.IsDemonstration == true)
+            if (payment.IsDemonstration)
             {
                 payment.CheckNumber = GetCheckNumber(payment);
                 _uow.Payment.InsertOrUpdate(payment);
