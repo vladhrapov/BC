@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    This is Index page
+</div>
+<div>
+    <ul>
+        <li>Users: @Html.ActionLink("api/User", null, "api/User", new { area = "" }, null)</li>
+        <li>Projects: @Html.ActionLink("api/Project", null, "api/Project", new { area = "" }, null)</li>
+        <li>Payments: @Html.ActionLink("api/Payments", null, "api/Payments", new { area = "" }, null)</li>
+    </ul>
+</div>
