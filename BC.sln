@@ -23,6 +23,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{2C89A1E6-A23
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BC.Web.Rest", "BC.Web.Rest\BC.Web.Rest.csproj", "{6C609D48-459D-4304-9A6C-98D9AA3332ED}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BC.Web.UI", "BC.Web.UI\", "{BF31F34D-C5F6-4960-96D1-D84D93023AA2}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_35847"
+		Debug.AspNetCompiler.PhysicalPath = "BC.Web.UI\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_35847\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_35847"
+		Release.AspNetCompiler.PhysicalPath = "BC.Web.UI\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_35847\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "35847"
+		SlnRelativePath = "BC.Web.UI\"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +74,10 @@ Global
 		{6C609D48-459D-4304-9A6C-98D9AA3332ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C609D48-459D-4304-9A6C-98D9AA3332ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C609D48-459D-4304-9A6C-98D9AA3332ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF31F34D-C5F6-4960-96D1-D84D93023AA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF31F34D-C5F6-4960-96D1-D84D93023AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF31F34D-C5F6-4960-96D1-D84D93023AA2}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF31F34D-C5F6-4960-96D1-D84D93023AA2}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,5 +89,6 @@ Global
 		{FE9F3F24-C6EC-4397-9698-9F91DFF7AE9A} = {B780F52F-45F0-420A-BCC8-187300D2B28A}
 		{131F1D4D-E9E6-4536-BB98-09719CF7822F} = {45D9B600-707E-4702-A470-5480A1F7F6AE}
 		{6C609D48-459D-4304-9A6C-98D9AA3332ED} = {2C89A1E6-A236-471E-B33D-CC1C7F940608}
+		{BF31F34D-C5F6-4960-96D1-D84D93023AA2} = {2C89A1E6-A236-471E-B33D-CC1C7F940608}
 	EndGlobalSection
 EndGlobal

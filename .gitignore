@@ -19,3 +19,5 @@ obj/
 _ReSharper*/
 packages/
 Migrations/
+BC.Web.UI/public
+BC.Web.UI/node_modules
