@@ -233,7 +233,7 @@ cd $(ProjectDir)..\BC.Web.UI\node_modules\angular2\bundles
 xcopy "angular2-polyfills.min.js" "$(SolutionDir)BC.Web.Rest\Scripts" /Y /I /E /D</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>cd $(ProjectDir)\Scripts
+    <PreBuildEvent>cd $(ProjectDir)Scripts
 del *.js
 cd $(ProjectDir)..\BC.Web.UI
 npm install
