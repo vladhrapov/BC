@@ -55,13 +55,13 @@
       <Project>{4326c553-b34f-44dc-9321-f101d2a70da3}</Project>
       <Name>BC.Domain.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BC.Infastructure.Interfaces\BC.Infastructure.Interfaces.csproj">
+      <Project>{AE4F6EFC-CDDD-4C58-8A04-D4ED14566BC4}</Project>
+      <Name>BC.Infastructure.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BC.Infrastructure.Data\BC.Infrastructure.Data.csproj">
       <Project>{2ab103e3-2630-46cf-8f39-098e766ab012}</Project>
       <Name>BC.Infrastructure.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BC.Services.Interfaces\BC.Services.Interfaces.csproj">
-      <Project>{131f1d4d-e9e6-4536-bb98-09719cf7822f}</Project>
-      <Name>BC.Services.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

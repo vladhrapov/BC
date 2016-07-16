@@ -2,7 +2,7 @@
 
 namespace BC.Domain.Interfaces
 {
-    public interface IUserRepository : IRepository<User>
+    public interface IUserRepository 
     {
 
     }

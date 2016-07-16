@@ -1,9 +1,9 @@
 ﻿using BC.Domain.Core;
 using BC.Infrastructure.Data.Repository;
-using BC.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BC.Infastructure.Interfaces;
 
 namespace BC.Infrastructure.Business.BusinessServices
 {

@@ -12,8 +12,12 @@ namespace BC.Domain.Core
         public int CheckNumber { get; set; }
 
         [Required]
+        [MinLength(8)]
+        [MaxLength(32)]
         public string Login { get; set; }
 
+        [MinLength(8)]
+        [MaxLength(32)]
         [Required]
         public string Password { get; set; }
 
@@ -32,7 +36,7 @@ namespace BC.Domain.Core
         public bool IsDemonstration { get; set; }
 
         [Required]
-        public Guid ProjectId { get; set; }
+        public Guid? ProjectId { get; set; }
 
         public Guid? UserId { get; set; }
 

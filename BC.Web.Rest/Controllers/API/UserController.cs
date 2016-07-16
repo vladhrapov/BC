@@ -7,6 +7,7 @@ using System.Web.Http;
 
 namespace BC.Web.Rest.Controllers
 {
+    //TODO Rework IT with return type IHTTPResult and Autprize attributes 
     public class UserController : ApiController
     {
         public List<User> Get()

@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4326C553-B34F-44DC-9321-F101D2A70DA3}</ProjectGuid>
+    <ProjectGuid>{AE4F6EFC-CDDD-4C58-8A04-D4ED14566BC4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BC.Domain.Interfaces</RootNamespace>
-    <AssemblyName>BC.Domain.Interfaces</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>BC.Infastructure.Interfaces</RootNamespace>
+    <AssemblyName>BC.Infastructure.Interfaces</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -40,22 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IGenericRepository.cs" />
-    <Compile Include="IPaymentRepository.cs" />
-    <Compile Include="IProjectRepository.cs" />
-    <Compile Include="IUow.cs" />
-    <Compile Include="IUserRepository.cs" />
+    <Compile Include="IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BC.Domain.Core\BC.Domain.Core.csproj">
-      <Project>{76adc1b6-d273-43e8-8a55-6cbf1ace4ad2}</Project>
-      <Name>BC.Domain.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

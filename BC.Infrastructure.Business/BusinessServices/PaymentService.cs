@@ -1,11 +1,11 @@
 ﻿using BC.Domain.Core;
 using BC.Domain.Core.Enums;
 using BC.Infrastructure.Data.Repository;
-using BC.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using BC.Infastructure.Interfaces;
 
 namespace BC.Infrastructure.Business.BusinessServices
 {
