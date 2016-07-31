@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BC.Domain.Interfaces;
 
 namespace BC.Infrastructure.Data
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public abstract class  GenericRepository<T> : IGenericRepository<T> where T : class
     {
         public virtual void Add(T entity)
         {

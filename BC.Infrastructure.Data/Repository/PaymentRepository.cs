@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BC.Domain.Interfaces;
 using BC.Domain.Core;
 
 namespace BC.Infrastructure.Data.Repository
 {
-    public class PaymentRepository : IPaymentRepository
+    public class PaymentRepository : GenericRepository<Payment> , IPaymentRepository
     {
         private readonly BcContext _context;
 

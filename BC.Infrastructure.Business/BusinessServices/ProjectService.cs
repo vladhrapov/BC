@@ -2,7 +2,6 @@
 using BC.Infrastructure.Data.Repository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using BC.Infastructure.Interfaces;
 
 namespace BC.Infrastructure.Business.BusinessServices

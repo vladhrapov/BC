@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BC.Domain.Interfaces;
+﻿using BC.Domain.Interfaces;
 
 namespace BC.Infrastructure.Data.Repository
 {
