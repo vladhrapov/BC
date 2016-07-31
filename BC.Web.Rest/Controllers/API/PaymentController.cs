@@ -14,7 +14,7 @@ namespace BC.Web.Rest.Controllers
         {
             try
             {
-                return Ok(new PaymentService().GetAll().ToList());
+                return Ok(new PaymentService().All().ToList());
             }
             catch (Exception)
             {
@@ -27,7 +27,7 @@ namespace BC.Web.Rest.Controllers
         {
             try
             {
-                var payment = new PaymentService().GetById(id);
+                var payment = new PaymentService().FindBy(p => p.Id == id);
                 if (payment != null)
                 {
                     return Ok(payment);
@@ -45,7 +45,7 @@ namespace BC.Web.Rest.Controllers
         {
             try
             {
-                var payment = new PaymentService().PaymentGetByCredentials(login, password);
+                var payment = new PaymentService().FindBy(p => p.Login.Equals(login) && p.Password.Equals(password));
 
                 if (payment != null)
                 {
@@ -110,7 +110,6 @@ namespace BC.Web.Rest.Controllers
             {
                 return InternalServerError();
             }
-
         }
     }
 }

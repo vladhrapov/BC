@@ -16,9 +16,9 @@ namespace BC.Domain.Core
 
         public string Message { get; set; }
 
-        public DateTime Data { get; set; }
+        public DateTime Date { get; set; }
 
-        public virtual ICollection<NewsComment> Comments { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
 
         public User User { get; set; }
 

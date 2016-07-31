@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 
 namespace BC.Domain.Core
 {
+
     public class Payment
     {
         [Key]
@@ -11,14 +13,10 @@ namespace BC.Domain.Core
         [Required]
         public int CheckNumber { get; set; }
 
-        [Required]
-        [MinLength(8)]
-        [MaxLength(32)]
+        [Required, MinLength(8), MaxLength(32)]
         public string Login { get; set; }
 
-        [MinLength(8)]
-        [MaxLength(32)]
-        [Required]
+        [Required, MinLength(8), MaxLength(32)]
         public string Password { get; set; }
 
         [Required]

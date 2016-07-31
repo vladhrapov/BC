@@ -2,6 +2,8 @@
 using BC.Infrastructure.Data.Repository;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using BC.Infastructure.Interfaces;
 
 namespace BC.Infrastructure.Business.BusinessServices
@@ -15,25 +17,25 @@ namespace BC.Infrastructure.Business.BusinessServices
             this._uow = BaseService.GetUow();
         }
 
-        public IEnumerable<Project> GetAll()
+        public IEnumerable<Project> All()
         {
-            return _uow.Project.All.AsEnumerable();
+            return _uow.Project.All();
         }
 
-        public Project GetById(Guid id)
+        public Project FindBy(Expression<Func<Project, bool>> predicate)
         {
-            return _uow.Project.Find(id);
+            return _uow.Project.FindBy(predicate);
         }
 
         public void Add(Project project)
         {
             project.Id = CheckDefaultId(project);
 
-            if (project.Name == string.Empty)
+            if (string.IsNullOrWhiteSpace(project.Name))
             {
-                throw new ArgumentException("Project name cant be empty");
+                throw new ArgumentException("Project name can't be empty");
             }
-            _uow.Project.InsertOrUpdate(project);
+            _uow.Project.Add(project);
             _uow.Save();
         }
 
@@ -45,13 +47,14 @@ namespace BC.Infrastructure.Business.BusinessServices
             {
                 throw new ArgumentException("Project name cant be empty");
             }
-            _uow.Project.InsertOrUpdate(project);
+            _uow.Project.Edit(project);
             _uow.Save();
         }
 
         public void Delete(Guid id)
         {
-            _uow.Project.Delete(id);
+            var project = _uow.Project.FindBy(p => p.Id == id);
+            _uow.Project.Delete(project);
             _uow.Save();
         }
 

@@ -14,9 +14,9 @@ namespace BC.Web.Rest.Controllers
         {
             try
             {
-                return Ok(new ProjectService().GetAll().ToList());
+                return Ok(new ProjectService().All().ToList());
             }
-            catch (Exception)
+            catch (Exception exception)
             {
                 return InternalServerError();
             }
@@ -27,7 +27,7 @@ namespace BC.Web.Rest.Controllers
         {
             try
             {
-                var project = new ProjectService().GetById(id);
+                var project = new ProjectService().FindBy(p => p.Id == id);
                 if (project != null)
                 {
                     return Ok(project);

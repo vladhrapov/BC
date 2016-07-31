@@ -11,9 +11,7 @@ namespace BC.Domain.Core
         [Key]
         public Guid Id { get; set; }
 
-        [Required]
-        [MinLength(5)]
-        [MaxLength(32)]
+        [Required, MinLength(5), MaxLength(32)]
         public string Name { get; set; }
 
         //assignment (Text on payment) Призначення
@@ -27,8 +25,7 @@ namespace BC.Domain.Core
         [Range(0, 5)]
         public double Rating { get; set; }
 
-        [Required]
-        [Range(0, double.MaxValue)]
+        [Required,Range(0, double.MaxValue)]
         public double TotalSum { get; set; }
 
         [Range(0, double.MaxValue)]
@@ -49,7 +46,7 @@ namespace BC.Domain.Core
 
         public virtual ICollection<Payment> Payments { get; set; }
 
-        public virtual ICollection<ProjectComment> Comments { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
 
         public virtual ICollection<News> Newses{ get; set; }
 

@@ -14,6 +14,7 @@ namespace BC.Domain.Core
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+        [Required, MaxLength(20)]
         public string Name { get; set; }
     }
 }

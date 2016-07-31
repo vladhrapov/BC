@@ -2,6 +2,7 @@
 using BC.Infrastructure.Data.Repository;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using BC.Infastructure.Interfaces;
 
 namespace BC.Infrastructure.Business.BusinessServices
@@ -15,48 +16,53 @@ namespace BC.Infrastructure.Business.BusinessServices
             this._uow = BaseService.GetUow();
         }
 
+        public IEnumerable<User> All()
+        {
+            throw new NotImplementedException();
+        }
+
+        public User FindBy(Expression<Func<User, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Add(User user)
         {
-            user.Id = Guid.NewGuid();
-            if (user.Password.Length < 8)
-            {
-                throw new ArgumentException("Login length less then 8 characters ");
-            }
+            //TODO Delete IT
+            //user.Id = Guid.NewGuid();
+            //if (user.Password.Length < 8)
+            //{
+            //    throw new ArgumentException("Login length less then 8 characters ");
+            //}
 
-            if (_uow.User.All.Any(u => u.Login == user.Login))
-            {
-                throw new ArgumentException("User with name {0}, is already exist, choose another login", user.Login);
-            }
+            //if (_uow.User.All.Any(u => u.Login == user.Login))
+            //{
+            //    throw new ArgumentException("User with name {0}, is already exist, choose another login", user.Login);
+            //}
 
-            _uow.User.InsertOrUpdate(user);
-            _uow.Save();
+            //_uow.User.InsertOrUpdate(user);
+            //_uow.Save();
         }
 
         public IEnumerable<User> GetAll()
         {
-            return _uow.User.All.AsEnumerable<User>();
+            throw new NotImplementedException();
         }
 
         public User GetById(Guid id)
         {
-            return _uow.User.Find(id);
+            throw new NotImplementedException();
         }
 
         public void Delete(Guid id)
         {
-            _uow.User.Delete(id);
+            throw new NotImplementedException();
             _uow.Save();
         }
 
         public void Update(User user)
         {
-            if (user.Password.Length < 8)
-            {
-                throw new ArgumentException("Login length less then 8 characters ");
-            }
-
-            _uow.User.InsertOrUpdate(user);
-            _uow.Save();
+            throw new NotImplementedException();
         }
     }
 }
