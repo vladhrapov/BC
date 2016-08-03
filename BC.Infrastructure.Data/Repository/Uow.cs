@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
 using BC.Domain.Interfaces;
 
 namespace BC.Infrastructure.Data.Repository
@@ -25,7 +21,7 @@ namespace BC.Infrastructure.Data.Repository
 
         public void Save()
         {
-            this._context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void Dispose()

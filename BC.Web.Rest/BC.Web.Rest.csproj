@@ -150,10 +150,12 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PaymentController.cs" />
-    <Compile Include="Controllers\ProjectController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\API\FeedBackController.cs" />
+    <Compile Include="Controllers\API\NewsController.cs" />
+    <Compile Include="Controllers\MVC\HomeController.cs" />
+    <Compile Include="Controllers\API\PaymentController.cs" />
+    <Compile Include="Controllers\API\ProjectController.cs" />
+    <Compile Include="Controllers\API\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -188,6 +190,10 @@
       <Project>{4326c553-b34f-44dc-9321-f101d2a70da3}</Project>
       <Name>BC.Domain.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BC.Infastructure.Interfaces\BC.Infastructure.Interfaces.csproj">
+      <Project>{AE4F6EFC-CDDD-4C58-8A04-D4ED14566BC4}</Project>
+      <Name>BC.Infastructure.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BC.Infrastructure.Business\BC.Infrastructure.Business.csproj">
       <Project>{fe9f3f24-c6ec-4397-9698-9f91dff7ae9a}</Project>
       <Name>BC.Infrastructure.Business</Name>
@@ -208,7 +214,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>64409</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:36051/</IISUrl>
+          <IISUrl>http://localhost:33452/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

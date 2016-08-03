@@ -12,9 +12,8 @@ namespace BC.Domain.Core
 
         [Required]
         public string Login { get; set; }
-
-        [MinLength(8)]
-        [Required]
+        
+        [Required,MinLength(8)]
         public string Password { get; set; }
 
         [Required]

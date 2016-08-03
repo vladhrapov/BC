@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BC.Domain.Core;
 using BC.Domain.Interfaces;
 
 namespace BC.Infrastructure.Data.Repository
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : GenericRepository<BcContext, User>, IUserRepository, IDisposable
     {
         private readonly BcContext _context;
 
@@ -53,6 +49,11 @@ namespace BC.Infrastructure.Data.Repository
             {
                 throw new NullReferenceException("There is no such user");
             }
+        }
+
+        public void Dispose()
+        {
+            _context.Dispose();
         }
     }
 }

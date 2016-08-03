@@ -1,8 +1,9 @@
-﻿using BC.Domain.Core;
+﻿using System;
+using BC.Domain.Core;
 
 namespace BC.Domain.Interfaces
 {
-    public interface IProjectRepository : IRepository<Project>
+    public interface IProjectRepository : IGenericRepository<Project>, IDisposable
     {
 
     }

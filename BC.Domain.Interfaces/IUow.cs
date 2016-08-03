@@ -2,11 +2,9 @@
 
 namespace BC.Domain.Interfaces
 {
+    //TODO Delte UOW or combine it with generic repository 
     public interface IUow : IDisposable
     {
-        IUserRepository User { get; set; }
-        IPaymentRepository Payment { get; set; }
-        IProjectRepository Project { get; set; }
-        void Save();
+      
     }
 }

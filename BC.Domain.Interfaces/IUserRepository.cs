@@ -1,8 +1,9 @@
-﻿using BC.Domain.Core;
+﻿using System;
+using BC.Domain.Core;
 
 namespace BC.Domain.Interfaces
 {
-    public interface IUserRepository : IRepository<User>
+    public interface IUserRepository : IGenericRepository<User>, IDisposable
     {
 
     }

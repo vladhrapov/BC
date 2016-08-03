@@ -40,9 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IGenericRepository.cs" />
     <Compile Include="IPaymentRepository.cs" />
     <Compile Include="IProjectRepository.cs" />
-    <Compile Include="IRepository.cs" />
     <Compile Include="IUow.cs" />
     <Compile Include="IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
