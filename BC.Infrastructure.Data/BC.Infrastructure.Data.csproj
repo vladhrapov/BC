@@ -52,9 +52,9 @@
     <Compile Include="BcContext.cs" />
     <Compile Include="DbInitializer.cs" />
     <Compile Include="GenericRepository.cs" />
-    <Compile Include="Migrations\201608031011000_comment_merg.cs" />
-    <Compile Include="Migrations\201608031011000_comment_merg.Designer.cs">
-      <DependentUpon>201608031011000_comment_merg.cs</DependentUpon>
+    <Compile Include="Migrations\201608032100197_start_migration.cs" />
+    <Compile Include="Migrations\201608032100197_start_migration.Designer.cs">
+      <DependentUpon>201608032100197_start_migration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,8 +78,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608031011000_comment_merg.resx">
-      <DependentUpon>201608031011000_comment_merg.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608032100197_start_migration.resx">
+      <DependentUpon>201608032100197_start_migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

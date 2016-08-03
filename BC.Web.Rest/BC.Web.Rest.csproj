@@ -242,8 +242,9 @@ xcopy "angular2-polyfills.min.js" "$(SolutionDir)BC.Web.Rest\Scripts" /Y /I /E /
     <PreBuildEvent>cd $(ProjectDir)Scripts
 del *.js
 cd $(ProjectDir)..\BC.Web.UI
-npm install
-npm run build</PreBuildEvent>
+if not exist public mkdir public
+npm run vsbuild
+</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

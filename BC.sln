@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{1CEDE8B4-9FF1-470D-A64E-698303523A08}"
 EndProject
@@ -42,9 +42,14 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BC.Web.UI", "BC.Web.UI\", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BC.Infastructure.Interfaces", "BC.Infastructure.Interfaces\BC.Infastructure.Interfaces.csproj", "{AE4F6EFC-CDDD-4C58-8A04-D4ED14566BC4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tets", "Tets", "{A32C8B45-C14F-4800-86F9-A162650FBEAD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3F28ABB3-12BA-4339-A2E6-F64E1C218D74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestTest", "RestTest\RestTest.csproj", "{76F5F895-6A9C-4921-BB98-6B0FA8DBB97D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BC.UnitTests", "BC.UnitTests\BC.UnitTests.csproj", "{F8E6CE14-0841-42BA-B4DD-027C7C1C558B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Connection", "Connection", "{0AF69211-271C-4E90-8B8A-B00C99850899}"
+	ProjectSection(SolutionItems) = preProject
+		connection.config = connection.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,10 +85,10 @@ Global
 		{AE4F6EFC-CDDD-4C58-8A04-D4ED14566BC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE4F6EFC-CDDD-4C58-8A04-D4ED14566BC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE4F6EFC-CDDD-4C58-8A04-D4ED14566BC4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{76F5F895-6A9C-4921-BB98-6B0FA8DBB97D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{76F5F895-6A9C-4921-BB98-6B0FA8DBB97D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{76F5F895-6A9C-4921-BB98-6B0FA8DBB97D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{76F5F895-6A9C-4921-BB98-6B0FA8DBB97D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8E6CE14-0841-42BA-B4DD-027C7C1C558B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8E6CE14-0841-42BA-B4DD-027C7C1C558B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8E6CE14-0841-42BA-B4DD-027C7C1C558B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8E6CE14-0841-42BA-B4DD-027C7C1C558B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,6 +101,6 @@ Global
 		{6C609D48-459D-4304-9A6C-98D9AA3332ED} = {2C89A1E6-A236-471E-B33D-CC1C7F940608}
 		{BF31F34D-C5F6-4960-96D1-D84D93023AA2} = {2C89A1E6-A236-471E-B33D-CC1C7F940608}
 		{AE4F6EFC-CDDD-4C58-8A04-D4ED14566BC4} = {B780F52F-45F0-420A-BCC8-187300D2B28A}
-		{76F5F895-6A9C-4921-BB98-6B0FA8DBB97D} = {A32C8B45-C14F-4800-86F9-A162650FBEAD}
+		{F8E6CE14-0841-42BA-B4DD-027C7C1C558B} = {3F28ABB3-12BA-4339-A2E6-F64E1C218D74}
 	EndGlobalSection
 EndGlobal
