@@ -21,3 +21,4 @@ packages/
 Migrations/
 BC.Web.UI/public
 BC.Web.UI/node_modules
+connection.config
