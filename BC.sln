@@ -46,7 +46,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3F28ABB3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BC.UnitTests", "BC.UnitTests\BC.UnitTests.csproj", "{F8E6CE14-0841-42BA-B4DD-027C7C1C558B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Connection", "Connection", "{0AF69211-271C-4E90-8B8A-B00C99850899}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Connection", "Connection", "{287624C5-C3A7-427A-B38E-79EFE440BD31}"
 	ProjectSection(SolutionItems) = preProject
 		connection.config = connection.config
 	EndProjectSection
