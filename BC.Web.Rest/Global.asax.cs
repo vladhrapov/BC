@@ -8,12 +8,13 @@ namespace BC.Web.Rest
     {
         protected void Application_Start()
         {
-            GlobalConfiguration.Configure(WebApiConfig.Register);
-            //WebApiConfig.Register(GlobalConfiguration.Configuration);
-            AreaRegistration.RegisterAllAreas();
+            // Register Web Api Routes
+            //GlobalConfiguration.Configure(WebApiConfig.Register);
+
+            // Register MVC Routes
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            
-            
+
+            //Startup.Configuration();
         }
     }
 }

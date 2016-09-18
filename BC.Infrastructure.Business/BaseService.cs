@@ -9,11 +9,13 @@ namespace BC.Infrastructure.Business
 
         protected BaseService()
         {
-            _uow = new Uow();
+            //_uow = new Uow();
         }
 
-        protected static Uow GetUow()
+        public static Uow GetUow()
         {
+            _uow = _uow ?? new Uow();
+
             return _uow as Uow;
         }
     }
