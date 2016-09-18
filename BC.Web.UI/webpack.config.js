@@ -3,7 +3,11 @@
 var path = require("path");
 
 module.exports = {
-  entry: "./app/boot.ts",
+  entry: [
+    "./node_modules/reflect-metadata/Reflect",
+    "./node_modules/zone.js/dist/zone",
+    "./app/boot.ts"
+  ],
   output: {
     publicPath: '/public/',
     path: path.join(__dirname, '/public'),

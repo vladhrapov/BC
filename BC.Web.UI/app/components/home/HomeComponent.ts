@@ -1,4 +1,4 @@
-import { Component } from "angular2/core";
+import { Component } from "@angular/core";
 
 @Component({
   selector: "bc-home",
@@ -21,9 +21,9 @@ export default class HomeComponent {
 
   init() {
     console.log(this.arr);
-    
+
     for (var i = 0; i < 50; i++) {
-      this.arr.push(i);      
+      this.arr.push(i);
     }
   }
 }
