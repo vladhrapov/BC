@@ -17,6 +17,7 @@
 obj/
 [Rr]elease*/
 _ReSharper*/
+.vscode/
 packages/
 Migrations/
 BC.Web.UI/public

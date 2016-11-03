@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ROUTER_DIRECTIVES, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Store } from "@ngrx/store";
 
 
@@ -12,9 +12,9 @@ import SignUpComponent from "../../authorization/signUp/SignUpComponent";
   inputs: [
     "isAuthorized"
   ],
-  directives: [
-      ROUTER_DIRECTIVES
-  ],
+  // directives: [
+  //     ROUTER_DIRECTIVES
+  // ],
   template: `
               <div *ngIf="!isAuthorized">
                 <button type="button" class="btn btn-default" [routerLink]="['sign-in']">Sign In</button>

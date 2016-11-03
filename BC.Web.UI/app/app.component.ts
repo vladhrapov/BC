@@ -1,7 +1,7 @@
-import { Component, provide } from "@angular/core";
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import { Component } from "@angular/core";
+// import { ROUTER_DIRECTIVES } from '@angular/router';
 // import { APP_BASE_HREF } from '@angular/platform/common';
-import { HTTP_PROVIDERS } from "@angular/http";
+// import { HTTP_PROVIDERS } from "@angular/http";
 import { AUTH_PROVIDERS } from "angular2-jwt";
 
 import HomeComponent from "./components/home/HomeComponent";
@@ -9,19 +9,17 @@ import AboutComponent from "./components/about/AboutComponent";
 import NewsComponent from "./components/news/NewsComponent";
 import ProjectsComponent from "./components/projects/ProjectsComponent";
 import PaymentsComponent from "./components/payments/PaymentsComponent";
-import HeaderComponent from "./components/shared/header/HeaderComponent";
-import FooterComponent from "./components/shared/footer/FooterComponent";
 import SignInComponent from "./components/authorization/signIn/SignInComponent";
 import SignUpComponent from "./components/authorization/signUp/SignUpComponent";
 
 
 @Component({
   selector: "[myApp]",
-  directives: [
-    ROUTER_DIRECTIVES,
-    HeaderComponent,
-    FooterComponent
-  ],
+  // directives: [
+  //   ROUTER_DIRECTIVES,
+  //   HeaderComponent,
+  //   FooterComponent
+  // ],
   providers: [
 
   ],

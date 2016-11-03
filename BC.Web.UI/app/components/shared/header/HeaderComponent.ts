@@ -1,16 +1,15 @@
 import { Component } from "@angular/core";
-import { ROUTER_DIRECTIVES } from '@angular/router';
+// import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Store } from "@ngrx/store";
 
-import AuthComponent from "./AuthComponent";
 import AuthService from "../../authorization/AuthService";
 
 @Component({
   selector: "bc-header",
-  directives: [
-    ROUTER_DIRECTIVES,
-    AuthComponent
-  ],
+  // directives: [
+  //   ROUTER_DIRECTIVES,
+  //   AuthComponent
+  // ],
   template: `
               <header>
                 <nav class="navbar navbar-default">
