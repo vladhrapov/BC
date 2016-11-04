@@ -3,19 +3,16 @@ import { Http, Request, Response, Headers } from "@angular/http";
 import { Observable } from 'rxjs/Rx';
 import { AuthHttp, AuthConfig, JwtHelper } from 'angular2-jwt';
 
+// Declarations
+import { ITokenObject } from "../../declarations/Auth";
 
 @Injectable()
-/**
- * AuthService
- */
 export default class AuthService {
     constructor(
       private _http: Http,
       private _authHttp: AuthHttp,
       private _jwtHelper: JwtHelper
-    ) {
-
-    }
+    ) {}
 
     getToken(username: string, password: string) {
       let hdrs = new Headers();
@@ -56,8 +53,8 @@ export default class AuthService {
       hdrs.append("Accept", "application/json");
       hdrs.append('Content-Type', 'application/json');
 
-    // Pass it after the body in a POST request
-    return this._http
+      // Pass it after the body in a POST request
+      return this._http
         .post(
           "api/accounts/create",
           // "username=vladyslav_khraps&password=vk2016%24%26&grant_type=\"password\"",
@@ -77,23 +74,10 @@ export default class AuthService {
       return <ITokenObject>this._jwtHelper.decodeToken(token);
     }
 
-    getProjects() {
-      return this._http
-        .get("api/Project")
-        .map((response: Response) => {
-          return response.json();
-        });
+    handleError(error: Response) {
+      console.log(error);
+      return Observable.throw(error.json().error || "Server error");
     }
-
-  handleError(error: Response) {
-    console.log(error);
-    return Observable.throw(error.json().error || "Server error");
-  }
 }
 
 
-interface ITokenObject {
-  name: string,
-  surname: string,
-  email: string
-}

@@ -1,15 +1,11 @@
 import { Component } from "@angular/core";
-// import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Store } from "@ngrx/store";
 
+// Services
 import AuthService from "../../authorization/AuthService";
 
 @Component({
   selector: "bc-header",
-  // directives: [
-  //   ROUTER_DIRECTIVES,
-  //   AuthComponent
-  // ],
   template: `
               <header>
                 <nav class="navbar navbar-default">
@@ -56,31 +52,8 @@ import AuthService from "../../authorization/AuthService";
                   </div>
                 </nav>
 
-
               </header>
-            `,
-  styles: [
-    `
-      .row-wrapper {
-        max-width: 960px;
-        margin: 0 auto;
-      }
-    `
-  ]
-
-  // template: `
-  //             <header>
-  //               <nav class="navbar navbar-default">
-  //                 <ul class="container">
-  //                   <li><a href="" [routerLink]="['Home']">Home</a></li>
-  //                   <li><a href="" [routerLink]="['About']">About</a></li>
-  //                   <li><a href="" [routerLink]="['News']">News</a></li>
-  //                   <li><a href="" [routerLink]="['Projects']">Projects</a></li>
-  //                   <li><a href="" [routerLink]="['Payments']">Payments</a></li>
-  //                 </ul>
-  //               </nav>
-  //             </header>
-  //           `
+            `
 })
 export default class HeaderComponent {
   public isAuthorized: boolean;
@@ -96,7 +69,5 @@ export default class HeaderComponent {
       this.isAuthorized = this._authService.checkAuthorization();
     });
   }
-
-
 
 }

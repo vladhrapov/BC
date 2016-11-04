@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 
+// Services
 import AuthService from "../AuthService";
-
 
 @Component({
   selector: "[bcSignUp]",

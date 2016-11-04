@@ -1,5 +1,8 @@
 import { Component } from "@angular/core";
 
+// Styles
+import "./assets/_styles.scss";
+
 @Component({
   selector: "[bcFooter]",
   template: `
@@ -8,24 +11,8 @@ import { Component } from "@angular/core";
                   Here is your footer
                 </div>
       
-            `,
-  styles: [
-    `
-      .footer {
-        display: block;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 60px;
-        background-color: #c5c5c5;
-      }
-      .row-wrapper {
-        max-width: 960px;
-        margin: 0 auto;
-      }
-    `
-  ]
+            `
 })
-export default class PaymentsComponent {
-
+export default class FooterComponent {
+  constructor() {}
 }

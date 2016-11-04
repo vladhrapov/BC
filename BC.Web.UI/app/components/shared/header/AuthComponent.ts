@@ -2,19 +2,14 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
 import { Store } from "@ngrx/store";
 
-
+// Services
 import AuthService from "../../authorization/AuthService";
-import SignInComponent from "../../authorization/signIn/SignInComponent";
-import SignUpComponent from "../../authorization/signUp/SignUpComponent";
 
 @Component({
   selector: "[bcAuth]",
   inputs: [
     "isAuthorized"
   ],
-  // directives: [
-  //     ROUTER_DIRECTIVES
-  // ],
   template: `
               <div *ngIf="!isAuthorized">
                 <button type="button" class="btn btn-default" [routerLink]="['sign-in']">Sign In</button>
@@ -33,17 +28,13 @@ export default class AuthComponent implements OnInit {
     private _authService: AuthService,
     private _router: Router,
     private _store: Store<any>
-  ) {
-
-  }
+  ) {}
 
   ngOnInit() {
     console.log(this._router, " - ");
   }
 
   signOut() {
-    console.log("345t4grgf");
-
     window.localStorage.removeItem("token");
 
     if (this._router.url == "/profile") {

@@ -1,16 +1,12 @@
 import { Component, Output, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
-// import { JwtHelper } from 'angular2-jwt';
 
+// Services
 import AuthService from "../AuthService";
 
 @Component({
   selector: "[bcSignIn]",
-  providers: [
-    //AuthService//,
-    // JwtHelper
-  ],
   template: `
                 <h2>Sign In</h2>
                 <div class="form-group">
@@ -28,7 +24,6 @@ import AuthService from "../AuthService";
 })
 export default class SignInComponent {
   public token: any;
-  public proj: any;
 
   constructor(
     private _router: Router,
@@ -41,31 +36,21 @@ export default class SignInComponent {
   }
 
   signIn() {
-      this._authService
-        .getToken((<HTMLInputElement>document.getElementById("username")).value, (<HTMLInputElement>document.getElementById("password")).value)
-        .subscribe(
-          token => this.token = token,
-          error => console.log(error),
-          () => {
-            console.log('Request Complete', "token: ", this.token, " Token decoded: ", this._authService.decodeToken(this.token.access_token));
-            window.localStorage.setItem("token", JSON.stringify(this.token));
-
-            this._store.dispatch({ type: "LOGGED_IN", payload: {
-              isAuthorized: this._authService.checkAuthorization()
-            }});
-
-            this._router.navigate(["/"]);
-          }
-        );
-  }
-
-  getProjects() {
     this._authService
-      .getProjects()
+      .getToken((<HTMLInputElement>document.getElementById("username")).value, (<HTMLInputElement>document.getElementById("password")).value)
       .subscribe(
-        proj => this.proj = proj,
+        token => this.token = token,
         error => console.log(error),
-        () => console.log('Request Complete', "projects: ", this.proj)
+        () => {
+          console.log('Request Complete', "token: ", this.token, " Token decoded: ", this._authService.decodeToken(this.token.access_token));
+          window.localStorage.setItem("token", JSON.stringify(this.token));
+
+          this._store.dispatch({ type: "LOGGED_IN", payload: {
+            isAuthorized: this._authService.checkAuthorization()
+          }});
+
+          this._router.navigate(["/"]);
+        }
       );
   }
 
